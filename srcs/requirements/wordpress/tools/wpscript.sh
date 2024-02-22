@@ -19,14 +19,20 @@ then
 else
 	# Si le fichier n'existe pas -> installation de Wordpress
 	sleep 10
+	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+	chmod +x wp-cli.phar
+	mv wp-cli.phar /usr/local/bin/wp
+
+	wp core download --allow-root --version=6.4 --path=/var/www/aducobu/wordpress
+
 	cd /var/www/aducobu/wordpress/
 
 	# Cree le fichier de configuration Wordpress
 	wp config create --allow-root \
-		-dbname=$SQL_DATABASE \
-		-dbuser=$SQL_USER \
-		-dbpass=$SQL_PASSWORD \
-		-dbhost=mariadb ;
+		--dbname=${SQL_DATABASE} \
+		--dbuser=${SQL_USER} \
+		--dbpass=${SQL_PASSWORD} \
+		--dbhost=mariadb ;
 
 	# Installe Wordpress
 	wp core install --allow-root \
