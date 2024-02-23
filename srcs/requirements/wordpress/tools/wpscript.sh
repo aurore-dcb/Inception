@@ -6,7 +6,7 @@ then
 	sleep 5
 else
 	# Si le fichier n'existe pas -> installation de Wordpress
-	sleep 10
+	sleep 20
 
 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 	chmod +x wp-cli.phar
@@ -15,9 +15,10 @@ else
 	wp core download --allow-root --version=6.4 --path=/var/www/aducobu/wordpress
 
 	cd /var/www/aducobu/wordpress
-
+	
+	sleep 1
+	
 	# Cree le fichier de configuration Wordpress
-	touch test.txt
 	wp config create --allow-root \
 		--dbname=${SQL_DATABASE} \
 		--dbuser=${SQL_USER} \
