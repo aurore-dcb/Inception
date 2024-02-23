@@ -1,4 +1,4 @@
-versionn : '3'
+version : '3'
 
 services:
   mariadb:
@@ -54,7 +54,7 @@ services:
       - "443:443"
     networks:
       - inception
-    restart: on_failure
+    restart: on-failure
     env_file: .env
     healthcheck:
       test: 'curl -kfsSL https://localhost:443/status'
@@ -72,7 +72,7 @@ volumes:
       device: '/home/aducobu/data/mariadb'
   wordpress:
     driver: local
-    drive_opts:
+    driver_opts:
       type: 'none'
       o: 'bind'
       device: '/home/aducobu/data/wordpress'
