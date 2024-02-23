@@ -1,8 +1,8 @@
 #!/bin/bash
-SQL_DATABASE=database
-SQL_USER=mysql
-SQL_PASSWORD=1234
-SQL_ROOT_PASSWORD=42Paris
+#SQL_DATABASE=database
+#SQL_USER=mysql
+#SQL_PASSWORD=1234
+#SQL_ROOT_PASSWORD=42Paris
 service mariadb start;
 sleep 5
 

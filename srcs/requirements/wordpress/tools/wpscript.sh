@@ -1,14 +1,14 @@
-SQL_DATABASE=wordpress
-SQL_USER=username
-SQL_PASSWORD=password
-DOMAIN_NAME=domain
-SITE_TITLE=title
-ADMIN_USER=user
-ADMIN_PASSWORD=1234abcd
-ADMIN_EMAIL=adnak@asdla
-USER1_LOGIN=login1
-USER1_MAIL=mail1@dhskcjsd
-USER1_PASSWORD=jkfasdkj
+#SQL_DATABASE=wordpress
+#SQL_USER=username
+#SQL_PASSWORD=password
+#DOMAIN_NAME=domain
+#SITE_TITLE=title
+#ADMIN_USER=user
+#ADMIN_PASSWORD=1234abcd
+#ADMIN_EMAIL=adnak@asdla
+#USER1_LOGIN=login1
+#USER1_MAIL=mail1@dhskcjsd
+#USER1_PASSWORD=jkfasdkj
 
 #!/bin/sh
 
@@ -27,13 +27,14 @@ else
 
 	cd /var/www/aducobu/wordpress/
 
+	echo "-- test1 --"
 	# Cree le fichier de configuration Wordpress
 	wp config create --allow-root \
 		--dbname=${SQL_DATABASE} \
 		--dbuser=${SQL_USER} \
 		--dbpass=${SQL_PASSWORD} \
 		--dbhost=mariadb ;
-
+	echo "-- test2 --"
 	# Installe Wordpress
 	wp core install --allow-root \
 		--url=https://${DOMAIN_NAME} \
@@ -41,7 +42,7 @@ else
 		--admin_user=${ADMIN_USER} \
 		--admin_password=${ADMIN_PASSWORD} \
 		--admin_email=${ADMIN_EMAIL} ;
-
+	echo "-- test3 --"
 	# Cree un utilisateur Wordpress
 	wp user create --allow-root \
 		${USER1_LOGIN} ${USER1_MAIL} \
