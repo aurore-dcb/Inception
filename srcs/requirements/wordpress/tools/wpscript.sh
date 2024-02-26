@@ -14,9 +14,9 @@ else
 
 	wp core download --allow-root --version=6.4 --path=/var/www/aducobu/wordpress
 
+	sleep 10
+
 	cd /var/www/aducobu/wordpress
-	
-	sleep 1
 	
 	# Cree le fichier de configuration Wordpress
 	wp config create --allow-root \
@@ -39,6 +39,8 @@ else
 		--user_pass=${USER1_PASSWORD} \
 		--role=author ;
 fi
+
+sleep 10
 
 # Execute PHP_FPM (FastCGI Process Manager) en avant plan
 exec /usr/sbin/php-fpm7.4 -F
